@@ -1,5 +1,13 @@
-require('dotenv').config();
+const config = require('./config');
 const app = require('./app');
+const connectMongo = require('./config/mongo');
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`API running on port ${port}`));
+const start = async () => {
+  await connectMongo();
+  app.listen(config.port, () => console.log(`API running on port ${config.port}`));
+};
+
+start().catch((err) => {
+  console.error('Failed to start', err);
+  process.exit(1);
+});
