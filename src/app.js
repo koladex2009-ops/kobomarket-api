@@ -11,4 +11,9 @@ app.get('/health', (req, res) => {
   res.json({ success: true, status: 'ok' });
 });
 
+const { notFound, errorHandler } = require('./middlewares/errorHandler');
+
+app.use(notFound);
+app.use(errorHandler);
+
 module.exports = app;
