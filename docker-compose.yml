@@ -7,6 +7,7 @@ services:
     environment:
       MONGO_URI: mongodb://mongo:27017/kobomarket
       PG_HOST: postgres
+      PG_PORT: 5432
     depends_on:
       postgres:
         condition: service_healthy
