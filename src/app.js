@@ -23,7 +23,7 @@ app.get('/health', async (req, res) => {
   res.status(ok ? 200 : 503).json({ success: ok, mongo, postgres });
 });
 
-
+app.use('/api/v1', require('./routes'));
 
 app.use(notFound);
 app.use(errorHandler);
